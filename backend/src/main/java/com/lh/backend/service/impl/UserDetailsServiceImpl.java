@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * ClassName:UserDetailsServiceImpl
  * Package:com.lh.backend.service.impl
- * Description:
+ * Description: 用来接入数据库信息
  *
  * @author:LH寒酥
  * @create:2025/1/17-17:52

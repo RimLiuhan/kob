@@ -12,5 +12,5 @@ import java.util.Map;
  * @version:v1.0
  */
 public interface InfoService {
-    public Map<String, String> getInfo(String username, String password);
+    public Map<String, String> getInfo();
 }

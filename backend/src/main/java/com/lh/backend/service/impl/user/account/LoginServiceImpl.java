@@ -29,12 +29,16 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Map<String, String> getToken(String username, String password) {
+        // 创建用户密码认证令牌
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, password);
+        // 用户身份验证
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+        // 获取认证后的用户信息
         UserDetailsImpl loginUser = (UserDetailsImpl) authenticate.getPrincipal();
         User user = loginUser.getUser();
 
+        //生成jwt令牌
         String jwt = JwtUtil.createJWT(user.getId().toString());
 
         Map<String, String> map = new HashMap<>();
