@@ -19,17 +19,17 @@
         </ul>
         <ul class="navbar-nav" v-if="$store.state.user.is_login">
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{ $store.state.user.username }}
             </a>
             <ul class="dropdown-menu">
                 <li><router-link class="dropdown-item" :to="{name: 'user_bot_index'}">我的Bot</router-link></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#" @click="logout">退出</a></li>
+                <li><a class="dropdown-item" href="javascript:;" @click="logout">退出</a></li>
             </ul>
             </li>
         </ul>
-        <ul class="navbar-nav" v-else>
+        <ul class="navbar-nav" v-else-if="!$store.state.user.pulling_info">
             <li class="nav-item">
             <router-link class="nav-link" :to="{name: 'user_account_login'}" role="button">
                 登录
@@ -57,6 +57,7 @@ export default {
         const route = useRoute();
         const store = useStore();
         let route_name = computed(() => route.name);
+        store.commit("updatePullingInfo", false);
         const logout = () => {
             store.dispatch("logout");
         }

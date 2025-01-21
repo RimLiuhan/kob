@@ -64,5 +64,8 @@ export default {
 </script>
 
 <style>
-
+body{
+  background-image: url("@/assets/images/GJ01.jpg");
+  background-size: cover;
+}
 </style>
