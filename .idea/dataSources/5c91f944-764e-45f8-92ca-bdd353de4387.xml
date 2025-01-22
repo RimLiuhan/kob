@@ -845,36 +845,86 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <user id="255" parent="1" name="u2">
       <Host>localhost</Host>
     </user>
-    <table id="256" parent="12" name="user"/>
-    <column id="257" parent="256" name="id">
+    <table id="256" parent="12" name="bot"/>
+    <table id="257" parent="12" name="user"/>
+    <column id="258" parent="256" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="258" parent="256" name="username">
+    <column id="259" parent="256" name="user_id">
       <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
     </column>
-    <column id="259" parent="256" name="password">
+    <column id="260" parent="256" name="title">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="260" parent="256" name="photo">
+    <column id="261" parent="256" name="description">
       <Position>4</Position>
-      <DataType>varchar(1000)|0s</DataType>
+      <DataType>varchar(300)|0s</DataType>
     </column>
-    <index id="261" parent="256" name="user_id_uindex">
+    <column id="262" parent="256" name="content">
+      <Position>5</Position>
+      <DataType>varchar(10000)|0s</DataType>
+    </column>
+    <column id="263" parent="256" name="rating">
+      <Position>6</Position>
+      <DataType>int(11)|0s</DataType>
+      <DefaultExpression>1500</DefaultExpression>
+    </column>
+    <column id="264" parent="256" name="create_time">
+      <Position>7</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="265" parent="256" name="modify_time">
+      <Position>8</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <index id="266" parent="256" name="table_name_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="262" parent="256" name="PRIMARY">
+    <key id="267" parent="256" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="263" parent="256" name="user_id_uindex">
+    <key id="268" parent="256" name="table_name_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>table_name_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="269" parent="257" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="270" parent="257" name="username">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="271" parent="257" name="password">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <column id="272" parent="257" name="photo">
+      <Position>4</Position>
+      <DataType>varchar(1000)|0s</DataType>
+    </column>
+    <index id="273" parent="257" name="user_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="274" parent="257" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="275" parent="257" name="user_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>user_id_uindex</UnderlyingIndexName>
     </key>
