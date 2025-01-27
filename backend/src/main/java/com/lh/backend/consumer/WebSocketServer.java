@@ -12,6 +12,7 @@ package com.lh.backend.consumer;
 import com.alibaba.fastjson2.JSONObject;
 import com.lh.backend.consumer.utils.Game;
 import com.lh.backend.consumer.utils.JwtAuthentication;
+import com.lh.backend.mapper.RecordMapper;
 import com.lh.backend.mapper.UserMapper;
 import com.lh.backend.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +39,17 @@ public class WebSocketServer {
     private Session session = null;
 
     private static UserMapper userMapper;
+    public static RecordMapper recordMapper;
     private Game game = null;
 
     @Autowired
     public void setUserMapper(UserMapper userMapper) {
         WebSocketServer.userMapper = userMapper;
+    }
+
+    @Autowired
+    public void setRecordMapper(RecordMapper recordMapper) {
+        WebSocketServer.recordMapper = recordMapper;
     }
 
     @OnOpen
