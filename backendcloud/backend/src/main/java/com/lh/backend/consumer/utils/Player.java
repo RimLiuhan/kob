@@ -21,6 +21,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Player {
     private Integer id;
+    private Integer botId; // -1 表示亲自出马，否则为托管的机器人id
+    private String botCode;
     private Integer sx;
     private Integer sy;
     private List<Integer> steps;
