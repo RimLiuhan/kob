@@ -12,6 +12,7 @@ package com.lh.backend.consumer.utils;
 import com.alibaba.fastjson2.JSONObject;
 import com.lh.backend.consumer.WebSocketServer;
 import com.lh.backend.pojo.Bot;
+import com.lh.backend.pojo.User;
 import lombok.SneakyThrows;
 
 import java.util.ArrayList;
@@ -276,8 +277,27 @@ public class Game extends Thread {
         return res.toString();
     }
 
+    private void updateUserRating(Player player, Integer rating) {
+        User user = WebSocketServer.userMapper.selectById(player.getId());
+        user.setRating(rating);
+        WebSocketServer.userMapper.updateById(user);
+    }
 
     private void saveToDatabase() {
+        Integer ratingA = WebSocketServer.userMapper.selectById(playerA.getId()).getRating();
+        Integer ratingB = WebSocketServer.userMapper.selectById(playerB.getId()).getRating();
+
+        if ("A".equals(loser)) {
+            ratingA -= 2;
+            ratingB += 5;
+        } else if ("B".equals(loser)) {
+            ratingA += 5;
+            ratingB -= 2;
+        }
+
+        updateUserRating(playerA, ratingA);
+        updateUserRating(playerB, ratingB);
+
         Record record = new Record(
                 null,
                 playerA.getId(),
