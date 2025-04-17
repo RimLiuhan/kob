@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/user/account/token/", "/user/account/register/").permitAll()
+                        .requestMatchers("/api/user/account/token/", "/api/user/account/register/").permitAll()
                         .requestMatchers("/pk/start/game/", "/pk/receive/bot/move/").access((authentication, context) ->
                                 new AuthorizationDecision(hasIpAddress.matches(context.getRequest())))
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
